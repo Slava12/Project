@@ -14,7 +14,7 @@ public class Menu : MonoBehaviour
     // Окна меню
     //private int _window = 100;
     // Звук (пока не работает)
-    private float _FloatVolume = 1;
+	private float _FloatVolume = OptionsMenu._audio;
     //private int IntVolume;
     // Разрешение экрана
     private float _FloatResolution = 3;
@@ -147,14 +147,19 @@ public class Menu : MonoBehaviour
 			//IntVolume = (int)_FloatVolume;
 			//audio.volume = IntVolume;
 			audio.volume = _FloatVolume;
+			OptionsMenu._audio = audio.volume;
 			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Back") || Input.GetKeyUp(KeyCode.Escape))
 			{
 				_window = 1;
 			}
 		}
     }
-    void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
+	void Update()
+	{
+		print("OptionsMenu:");
+		print(OptionsMenu._audio);
+		print("AudioMenu:");
+		print(_FloatVolume);
+		audio.volume = OptionsMenu._audio;
+	}
 }

@@ -14,7 +14,7 @@ private bool _paused = false;
 // Окна меню
 private int _window = 100;
 // Звук (пока не работает)
-//private float _FloatVolume = 50;
+private float _FloatVolume = OptionsMenu._audio;
 //private int IntVolume;
 // Разрешение экрана
 private float _FloatResolution = 3;
@@ -43,7 +43,11 @@ private bool FullScreen = true;
 	void Update ()
 	{
        // controller = transform.GetComponent<CharacterController>();
-        
+		print("OptionsMenu:");
+		print(OptionsMenu._audio);
+		print("AudioPause:");
+		print(_FloatVolume);
+		audio.volume = OptionsMenu._audio;
         //var bb = aa;
 	// Ставим игру на паузу
 	if(Input.GetKeyUp(KeyCode.Escape)){
@@ -122,11 +126,12 @@ private bool FullScreen = true;
 			GUI.Box ( new Rect(Screen.width/2 - 100,Screen.height/2 - 100,200,180), "Audio"); 
 			GUI.Label ( new Rect(Screen.width/2 - 100,Screen.height/2 - 80,180,140), "Volume:" ); // текст 
 			
-			//_FloatVolume = GUI.HorizontalSlider ( new Rect(Screen.width/2+50 - 90,Screen.height/2+6 - 80, 100, 20), _FloatVolume, 0, 1);
+			_FloatVolume = GUI.HorizontalSlider ( new Rect(Screen.width/2+50 - 90,Screen.height/2+6 - 80, 100, 20), _FloatVolume, 0, 1);
 			//IntVolume = (int)_FloatVolume;
 			//audio.volume = IntVolume;
-		   // audio.volume = _FloatVolume;
-            audio.volume = GUI.HorizontalSlider(new Rect(Screen.width / 2 + 50 - 90, Screen.height / 2 + 6 - 80, 100, 20), audio.volume, 0, 1);
+		    audio.volume = _FloatVolume;
+			OptionsMenu._audio = _FloatVolume;
+            //audio.volume = GUI.HorizontalSlider(new Rect(Screen.width / 2 + 50 - 90, Screen.height / 2 + 6 - 80, 100, 20), audio.volume, 0, 1);
 			if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 + 40,180,30), "Back") || Input.GetKeyUp(KeyCode.Escape)) { 
         		_window = 1; 
     		} 
