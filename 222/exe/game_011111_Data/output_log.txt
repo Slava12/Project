@@ -1,0 +1,46 @@
+Initialize engine version: 4.6.1f1 (d1db7a1b5196)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 680 (ID=0x1180)
+    Vendor:   NVIDIA
+    VRAM:     1990 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\Unity\222\exe\game_011111_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\Unity\222\exe\game_011111_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\Unity\222\exe\game_011111_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading E:\Unity\222\exe\game_011111_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: E:\Unity\222\exe\game_011111_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\Unity\222\exe\game_011111_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\Unity\222\exe\game_011111_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading E:\Unity\222\exe\game_011111_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: E:\Unity\222\exe\game_011111_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading E:\Unity\222\exe\game_011111_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: E:\Unity\222\exe\game_011111_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\Unity\222\exe\game_011111_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.039 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: E:\Unity\222\exe\game_011111_Data\Managed\System.Core.dll (this message is harmless)
+WARNING: Shader Unsupported: 'Hidden/Nature/Tree Creator Leaves Optimized' - Pass '' shader state not supported
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1638)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1638)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1638)
+
+UnloadTime: 1.358799 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 332.
+Total: 3.116379 ms (FindLiveObjects: 0.022521 ms CreateObjectMapping: 0.015614 ms MarkObjects: 0.159752 ms  DeleteObjects: 2.241643 ms)
+
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported
