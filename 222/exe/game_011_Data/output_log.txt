@@ -4,32 +4,24 @@ Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
     Renderer: NVIDIA GeForce GTX 680 (ID=0x1180)
     Vendor:   NVIDIA
-    VRAM:     1990 MB
+    VRAM:     1985 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: E:\Unity\222\exe\game_011_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading E:\Unity\222\exe\game_011_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: E:\Unity\222\exe\game_011_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading E:\Unity\222\exe\game_011_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: E:\Unity\222\exe\game_011_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading E:\Unity\222\exe\game_011_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: E:\Unity\222\exe\game_011_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
-Loading E:\Unity\222\exe\game_011_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
-Platform assembly: E:\Unity\222\exe\game_011_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
-Loading E:\Unity\222\exe\game_011_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-Platform assembly: E:\Unity\222\exe\game_011_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading E:\Unity\222\exe\game_011_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.124 seconds
+Platform assembly: E:\Repositories\Project\222\exe\game_011_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\Repositories\Project\222\exe\game_011_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\Repositories\Project\222\exe\game_011_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading E:\Repositories\Project\222\exe\game_011_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: E:\Repositories\Project\222\exe\game_011_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\Repositories\Project\222\exe\game_011_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\Repositories\Project\222\exe\game_011_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading E:\Repositories\Project\222\exe\game_011_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: E:\Repositories\Project\222\exe\game_011_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading E:\Repositories\Project\222\exe\game_011_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: E:\Repositories\Project\222\exe\game_011_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\Repositories\Project\222\exe\game_011_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.039 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-Platform assembly: E:\Unity\222\exe\game_011_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: E:\Repositories\Project\222\exe\game_011_Data\Managed\System.Core.dll (this message is harmless)
 WARNING: Shader Unsupported: 'Hidden/Nature/Tree Creator Leaves Optimized' - Pass '' shader state not supported
-WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported
-UnloadTime: 1.554299 ms
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 326.
-Total: 3.047640 ms (FindLiveObjects: 0.026125 ms CreateObjectMapping: 0.015014 ms MarkObjects: 0.144139 ms  DeleteObjects: 2.163587 ms)
-
-Platform assembly: E:\Unity\222\exe\game_011_Data\Managed\Boo.Lang.dll (this message is harmless)
 WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Details/BillboardWavingDoublePass' - Pass '' shader state not supported

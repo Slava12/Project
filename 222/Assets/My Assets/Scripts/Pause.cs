@@ -87,8 +87,8 @@ private bool FullScreen = true;
 	
 	void  OnGUI (){
 		//////////////////
-		GUI.Box(new Rect(Screen.width / 2 + 500, Screen.height / 2 + 250, 100, 25), "Health = " + ((int)PlayerWater.health).ToString());
-		GUI.Box(new Rect(Screen.width / 2 + 500, Screen.height / 2 + 280, 100, 25), "Oxygen = " + ((int)PlayerWater.oxygen).ToString());
+		GUI.Box(new Rect(Screen.width - 150, Screen.height - 100, 100, 25), "Health = " + ((int)PlayerWater.health).ToString());
+		GUI.Box(new Rect(Screen.width - 150, Screen.height - 70, 100, 25), "Oxygen = " + ((int)PlayerWater.oxygen).ToString());
 		////////////////////////////
 		if (_window == 0 && Event.current.type != EventType.KeyUp)
 		{ // Главное меню активировано при _window = 0 
@@ -167,42 +167,37 @@ private bool FullScreen = true;
 			if (IntResolution == 0){
 				width = 640;
 				height = 480;
-				//StringWidth = width.ToString();
-				//StringHeight = height.ToString();
 			}
 			if (IntResolution == 1){
 				width = 1024;
 				height = 768;
-				//StringWidth = width.ToString();
-				//StringHeight = height.ToString();
 			}
 			if (IntResolution == 2){
 				width = 1600;
 				height = 900;
-				//StringWidth = width.ToString();
-				//StringHeight = height.ToString();
 			}
             if (IntResolution == 3)
             {
                 width = 1920;
                 height = 1080;
-                //StringWidth = width.ToString();
-                //StringHeight = height.ToString();
             }
 			StringWidth = width.ToString();
 			StringHeight = height.ToString();
 			// Вывод на экран выбираемого расширения
 			GUI.Label ( new Rect(Screen.width/2 - 90,Screen.height/2 - 40,180,30), StringWidth); // ширина
 			GUI.Label ( new Rect(Screen.width/2 - 50,Screen.height/2 - 40,180,30), StringHeight); // высота
-			
-			FullScreen = GUI.Toggle ( new Rect(Screen.width/2 - 90,Screen.height/2 - 0,180,30), FullScreen, "Full screen"); 
-
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Save and back") || Input.GetKeyUp(KeyCode.Escape))
+			FullScreen = GUI.Toggle ( new Rect(Screen.width/2 - 90,Screen.height/2 - 0,180,30), FullScreen, "Full screen");
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Save and back"))
 			{ 
 				Screen.SetResolution (width, height, FullScreen);//A - ширина. B - высота. С - полноэкранный или оконный.
 				_inMenu = true;
 				_window = 1;
-    		} 
+			}
+			if (Input.GetKeyUp(KeyCode.Escape))
+			{
+				_inMenu = true;
+				_window = 1;
+			}
 		}
         //if (_window == 4){
         //    GUI.Box ( new Rect(Screen.width/2 - 100,Screen.height/2 - 100,200,180), "Type control");

@@ -77,7 +77,7 @@ public class Menu : MonoBehaviour
 		if (_window == 2)
 		{
 			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 200, 180), "Help");
-			GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 80, 180, 140), "Надо добавить больше источников звука и сделать управление ими. Также непонятки с деревьями не радуют."); // текст 
+			GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 80, 180, 140), "Надо добавить больше источников звука и сделать управление ими. Также непонятки с деревьями не радуют. Подумать насчёт Resolution."); // текст 
 			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Back") || Input.GetKey(KeyCode.Escape))
 			{
 				_window = 0;
@@ -96,29 +96,21 @@ public class Menu : MonoBehaviour
             {
                 width = 640;
                 height = 480;
-                //StringWidth = width.ToString();
-                //StringHeight = height.ToString();
             }
             if (IntResolution == 1)
             {
                 width = 1024;
                 height = 768;
-                //StringWidth = width.ToString();
-                //StringHeight = height.ToString();
             }
             if (IntResolution == 2)
             {
                 width = 1600;
                 height = 900;
-                //StringWidth = width.ToString();
-                //StringHeight = height.ToString();
             }
             if (IntResolution == 3)
             {
                 width = 1920;
                 height = 1080;
-                //StringWidth = width.ToString();
-                //StringHeight = height.ToString();
             }
 			StringWidth = width.ToString();
 			StringHeight = height.ToString();
