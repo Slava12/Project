@@ -68,7 +68,7 @@ public class Menu : MonoBehaviour
             //{ // Управление
             //    _window = 5;
             //}
-            if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Back") || Input.GetKey("escape"))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Back") || Input.GetKey(KeyCode.Escape))
             {
                 _window = 0;
             }
@@ -77,8 +77,8 @@ public class Menu : MonoBehaviour
 		if (_window == 2)
 		{
 			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 200, 180), "Help");
-			GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 80, 180, 140), "No help)))\nАудио разной громкости в меню и в игре\nes ist nötig, um die Maus zu konfigurieren\n奇怪的魔方"); // текст 
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Back") || Input.GetKey("escape"))
+			GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 80, 180, 140), "Надо добавить больше источников звука и сделать управление ими. Также непонятки с деревьями не радуют."); // текст 
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Back") || Input.GetKey(KeyCode.Escape))
 			{
 				_window = 0;
 			}
@@ -96,30 +96,32 @@ public class Menu : MonoBehaviour
             {
                 width = 640;
                 height = 480;
-                StringWidth = width.ToString();
-                StringHeight = height.ToString();
+                //StringWidth = width.ToString();
+                //StringHeight = height.ToString();
             }
             if (IntResolution == 1)
             {
                 width = 1024;
                 height = 768;
-                StringWidth = width.ToString();
-                StringHeight = height.ToString();
+                //StringWidth = width.ToString();
+                //StringHeight = height.ToString();
             }
             if (IntResolution == 2)
             {
                 width = 1600;
                 height = 900;
-                StringWidth = width.ToString();
-                StringHeight = height.ToString();
+                //StringWidth = width.ToString();
+                //StringHeight = height.ToString();
             }
             if (IntResolution == 3)
             {
                 width = 1920;
                 height = 1080;
-                StringWidth = width.ToString();
-                StringHeight = height.ToString();
+                //StringWidth = width.ToString();
+                //StringHeight = height.ToString();
             }
+			StringWidth = width.ToString();
+			StringHeight = height.ToString();
             // Вывод на экран выбираемого расширения
             GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), StringWidth); // ширина
             GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 40, 180, 30), StringHeight); // высота
@@ -127,15 +129,15 @@ public class Menu : MonoBehaviour
             FullScreen = GUI.Toggle(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), FullScreen, "Full screen");
             //if (FullScreen == true) {}
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Save and back"))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Save and back"))
             {
                 Screen.SetResolution(width, height, FullScreen);//A - ширина. B - высота. С - полноэкранный или оконный.
                 _window = 1;
             }
-            if (Input.GetKeyUp(KeyCode.Escape))
-            {
-                _window = 1;
-            }
+			if (Input.GetKeyUp(KeyCode.Escape))
+			{
+				_window = 1;
+			}
         }
 		// Звук
 		if (_window == 4)
@@ -156,10 +158,10 @@ public class Menu : MonoBehaviour
     }
 	void Update()
 	{
-		print("OptionsMenu:");
-		print(OptionsMenu._audio);
-		print("AudioMenu:");
-		print(_FloatVolume);
+		//print("OptionsMenu:");
+		//print(OptionsMenu._audio);
+		//print("AudioMenu:");
+		//print(_FloatVolume);
 		audio.volume = OptionsMenu._audio;
 	}
 }

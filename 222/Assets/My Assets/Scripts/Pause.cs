@@ -7,12 +7,13 @@
 using UnityEngine; 
 using System.Collections; 
 
-public class Pause : MonoBehaviour { 
-    
+public class Pause : MonoBehaviour
+{
+	private bool _inMenu = false;
 // Игровая пауза
 private bool _paused = false;
 // Окна меню
-private int _window = 100;
+private int _window = -100;
 // Звук (пока не работает)
 private float _FloatVolume = OptionsMenu._audio;
 //private int IntVolume;
@@ -27,7 +28,7 @@ private string StringHeight;
 private int width = 1920;
 private int height = 1080;
 private bool FullScreen = true;
-	
+
 // Для настроек управления
 //private bool Mouse;
 //private bool Keyboard;
@@ -42,70 +43,84 @@ private bool FullScreen = true;
   // Update выполняется на каждый кадр 
 	void Update ()
 	{
-       // controller = transform.GetComponent<CharacterController>();
-		print("OptionsMenu:");
-		print(OptionsMenu._audio);
-		print("AudioPause:");
-		print(_FloatVolume);
+		//print("OptionsMenu:");
+		//print(OptionsMenu._audio);
+		//print("AudioPause:");
+		//print(_FloatVolume);
+		//print("Window:");
+		//print(_window);
+		//print("Paused:");
+		//print(_paused);
+		
 		audio.volume = OptionsMenu._audio;
-        //var bb = aa;
 	// Ставим игру на паузу
-	if(Input.GetKeyUp(KeyCode.Escape)){
-		if(!_paused){  
-			Time.timeScale = 0;  
-			_paused = true; 
-			_window = 0;
-            audio.Pause();
-            Screen.showCursor = true;
-		    //var aa = GameObject.Find("First Person Controller").GetComponent("MouseLook");
-		    //var bb = aa;
-            var mouseLook = GameObject.Find("First Person Controller").GetComponent("MouseLook");
-		    Destroy(mouseLook);
-            
-		    //controller.enabled = false;
-		}
-		else{  
-			Time.timeScale = 1;  
-			_paused = false;
-			_window = 100;
-            audio.Play();
-            Screen.showCursor = false;
-		    //bb = aa;
-            
-		    //aa = GameObject.Find("First Person Controller").GetComponent("MouseLook");
-		    GameObject.Find("First Person Controller").AddComponent("MouseLook");
-		} 
+		if (Input.GetKeyUp(KeyCode.Escape) && _inMenu == false)
+		{
+			if (!_paused)
+			{
+				Time.timeScale = 0;
+				_paused = true;
+				_window = 0;
+				audio.Pause();
+				Screen.showCursor = true;
+				var mouseLook = GameObject.Find("First Person Controller").GetComponent("MouseLook");
+				//var mmouse = MouseLook.rotationY;
+				//print(mmouse);
+				Destroy(mouseLook);
+				//return;
+			}
+			//if(_paused)
+			else{
+				//if (_window > 0)
+				//{
+				//	print("lol");
+				//}
+				Time.timeScale = 1;
+				_paused = false;
+				_window = -100;
+				audio.Play();
+				Screen.showCursor = false;
+				GameObject.Find("First Person Controller").AddComponent("MouseLook");
+			}
 		} 
 	} 
 	
-	void  OnGUI (){ 	
-		if (_window == 0) { // Главное меню активировано при _window = 0 
+	void  OnGUI (){
+		//////////////////
+		GUI.Box(new Rect(Screen.width / 2 + 500, Screen.height / 2 + 250, 100, 25), "Health = " + ((int)PlayerWater.health).ToString());
+		GUI.Box(new Rect(Screen.width / 2 + 500, Screen.height / 2 + 280, 100, 25), "Oxygen = " + ((int)PlayerWater.oxygen).ToString());
+		////////////////////////////
+		if (_window == 0 && Event.current.type != EventType.KeyUp)
+		{ // Главное меню активировано при _window = 0 
 			GUI.Box ( new Rect(Screen.width/2 - 100,Screen.height/2 - 100,200,180), "Game menu");
-			
-		if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 - 80,180,30), "Continue")) { // Продолжить
+			_inMenu = false;
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), "Continue"))
+			{ // Продолжить
     			Time.timeScale = 1;
-				_paused=false;
-				_window = 100;
-                audio.Play();
-                Screen.showCursor = false;
-                GameObject.Find("First Person Controller").AddComponent("MouseLook");
-    		} 
-		if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 - 40,180,30), "Options")) { // Опции
-            	_window = 1; // активируем окно "настройки" 
-            }
-		if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 - 0,180,30), "Main menu")) { // Главное меню 
-				Time.timeScale = 1;  
 				_paused = false;
-				_window = 100;
+				_window = -100;
+				audio.Play();
+				Screen.showCursor = false;
+				GameObject.Find("First Person Controller").AddComponent("MouseLook");
+    		} 
+			if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 - 40,180,30), "Options"))
+			{ // Опции
+				//_inMenu = true;
+            	_window = 1; // активируем окно "настройки" 
+			}
+			if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 - 0,180,30), "Main menu"))
+			{ // Главное меню 
             	Application.LoadLevel (0);   
-            } 
-		if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 + 40,180,30), "Exit game")) { // Выход из игры
+			} 
+			if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 + 40,180,30), "Exit game"))
+			{ // Выход из игры
             	Application.Quit(); 
-            } 
+			}
 		}
 
 		// Настройки
-		if (_window == 1) {  
+		if (_window == 1 && Event.current.type != EventType.KeyUp)
+		{  
 			GUI.Box ( new Rect(Screen.width/2 - 100,Screen.height/2 - 100,200,180), "Options"); 
 			
 			if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 - 80,180,30), "Video")) { // Видео
@@ -117,12 +132,15 @@ private bool FullScreen = true;
             //if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 - 0,180,30), "Control")) { // Управление
             //    _window = 4;   
             //}
-			if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 + 40,180,30), "Back") || Input.GetKeyUp(KeyCode.Escape)) {
-    			_window = 0; 
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Back") || Input.GetKeyUp(KeyCode.Escape))
+			{
+				_inMenu = true;
+    			_window = 0;
     		} 
 		}
 		// Звук
-		if (_window == 2) { 
+		if (_window == 2 && Event.current.type != EventType.KeyUp)
+		{ 
 			GUI.Box ( new Rect(Screen.width/2 - 100,Screen.height/2 - 100,200,180), "Audio"); 
 			GUI.Label ( new Rect(Screen.width/2 - 100,Screen.height/2 - 80,180,140), "Volume:" ); // текст 
 			
@@ -133,11 +151,13 @@ private bool FullScreen = true;
 			OptionsMenu._audio = _FloatVolume;
             //audio.volume = GUI.HorizontalSlider(new Rect(Screen.width / 2 + 50 - 90, Screen.height / 2 + 6 - 80, 100, 20), audio.volume, 0, 1);
 			if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 + 40,180,30), "Back") || Input.GetKeyUp(KeyCode.Escape)) { 
-        		_window = 1; 
-    		} 
+        		_window = 1;
+				_inMenu = true;
+			} 
 		}
 		// Видео
-		if (_window == 3) { 
+		if (_window == 3 && Event.current.type != EventType.KeyUp)
+		{ 
 			GUI.Box ( new Rect(Screen.width/2 - 100,Screen.height/2 - 100,200,180), "Video"); 
 			GUI.Label ( new Rect(Screen.width/2 - 90,Screen.height/2 - 80,180,30), "Resolution:"); // текст 
 			
@@ -147,42 +167,42 @@ private bool FullScreen = true;
 			if (IntResolution == 0){
 				width = 640;
 				height = 480;
-				StringWidth = width.ToString();
-				StringHeight = height.ToString();
+				//StringWidth = width.ToString();
+				//StringHeight = height.ToString();
 			}
 			if (IntResolution == 1){
 				width = 1024;
 				height = 768;
-				StringWidth = width.ToString();
-				StringHeight = height.ToString();
+				//StringWidth = width.ToString();
+				//StringHeight = height.ToString();
 			}
 			if (IntResolution == 2){
 				width = 1600;
 				height = 900;
-				StringWidth = width.ToString();
-				StringHeight = height.ToString();
+				//StringWidth = width.ToString();
+				//StringHeight = height.ToString();
 			}
             if (IntResolution == 3)
             {
                 width = 1920;
                 height = 1080;
-                StringWidth = width.ToString();
-                StringHeight = height.ToString();
+                //StringWidth = width.ToString();
+                //StringHeight = height.ToString();
             }
+			StringWidth = width.ToString();
+			StringHeight = height.ToString();
 			// Вывод на экран выбираемого расширения
 			GUI.Label ( new Rect(Screen.width/2 - 90,Screen.height/2 - 40,180,30), StringWidth); // ширина
 			GUI.Label ( new Rect(Screen.width/2 - 50,Screen.height/2 - 40,180,30), StringHeight); // высота
 			
 			FullScreen = GUI.Toggle ( new Rect(Screen.width/2 - 90,Screen.height/2 - 0,180,30), FullScreen, "Full screen"); 
-			//if (FullScreen == true) {}
-			
-			if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 + 40,180,30), "Save and back")) { 
+
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Save and back") || Input.GetKeyUp(KeyCode.Escape))
+			{ 
 				Screen.SetResolution (width, height, FullScreen);//A - ширина. B - высота. С - полноэкранный или оконный.
+				_inMenu = true;
 				_window = 1;
     		} 
-			if (Input.GetKeyUp(KeyCode.Escape)) { 
-				_window = 1;
-    		}
 		}
         //if (_window == 4){
         //    GUI.Box ( new Rect(Screen.width/2 - 100,Screen.height/2 - 100,200,180), "Type control");

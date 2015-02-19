@@ -6,6 +6,11 @@ public class PlayerWater : MonoBehaviour
 
     public BlurEffect bf;
     public float distance = 100f;
+	////////////////////////////////////////////
+	public GlobalFog gf;
+	public static float health = 100;
+	public static float oxygen = 100;
+	////////////////////////////////////
 	// Use this for initialization
 	void Start () {
 	
@@ -18,22 +23,34 @@ public class PlayerWater : MonoBehaviour
 
 	    if (Physics.Raycast(ray, out hit, distance))
 	    {
-	        if (hit.collider.name == "water")
+	        if (hit.collider.tag == "Water")
 	        {
+		        gf.enabled = true;
 	            bf.enabled = true;
 	            Global.stats = true;
-	        }
-	        if (hit.collider.name != "water")
-	        {
-	            bf.enabled = false;
-	            Global.stats = false;
+		        oxygen -= Time.deltaTime * 6;
 	        }
 	    }
         else
 	    {
+		    gf.enabled = false;
 	        bf.enabled = false;
             Global.stats = false;
+			oxygen += Time.deltaTime * 6;
         }
+		if (oxygen >= 100)
+		{
+			oxygen = 100;
+		}
+		if (oxygen <= 0)
+		{
+			oxygen = 0;
+			health -= Time.deltaTime * 6;
+		}
+		if (health <= 0)
+		{
+			health = 0;
+		}
 	}
 
     public  static class Global
