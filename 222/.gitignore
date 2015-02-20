@@ -3,9 +3,11 @@
 # =============== #
 Temp/
 Library/
-exe/
+Windows/
 Linux/
 Mac/
+Build/
+
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
