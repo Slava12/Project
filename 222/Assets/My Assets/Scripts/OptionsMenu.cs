@@ -12,5 +12,5 @@ public class OptionsMenu : MonoBehaviour {
 	//void Update () {
 	
 	//}
-	public static float _audio = 1;
+	public static float _audio = (float)0.5;
 }

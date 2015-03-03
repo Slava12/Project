@@ -77,7 +77,7 @@ public class Menu : MonoBehaviour
 		if (_window == 2)
 		{
 			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 200, 180), "Help");
-			GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 80, 180, 140), "Надо добавить больше источников звука и сделать управление ими. Также непонятки с деревьями не радуют. Подумать насчёт Resolution."); // текст 
+			GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 80, 180, 140), "Менять скорость игры: Num0 - Num9"); // текст 
 			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Back") || Input.GetKey(KeyCode.Escape))
 			{
 				_window = 0;
