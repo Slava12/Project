@@ -1,88 +1,69 @@
-﻿/// <summary>
-/// Pause.
-/// Вешается на любой игровой объект
-/// Вызывает меню с настройками и останавливает игру
-/// </summary>
-//using menu.cs;
+﻿// Pause.
+// Вешается на любой игровой объект
+// Вызывает меню с настройками и останавливает игру
+
 using UnityEngine; 
 using System.Collections; 
 
 public class Pause : MonoBehaviour
 {
-	private bool _inMenu = false;
-// Игровая пауза
-private bool _paused = false;
-// Окна меню
-private int _window = -100;
-// Звук (пока не работает)
-private float _FloatVolume = OptionsMenu._audio;
-//private int IntVolume;
-// Разрешение экрана
-private float _FloatResolution = 3;
-private int IntResolution;
-// Для вывода значений на экран
-private string StringWidth;
-private string StringHeight;
+	private bool _inMenu;
+	// Игровая пауза
+	private bool _paused;
+	// Окна меню
+	private int _window = -100;
+	// Звук (пока не работает)
+	//private float _FloatVolume = OptionsMenu._audio;
+	//private int IntVolume;
+	// Разрешение экрана
+	private float _FloatResolution = 3;
+	private int IntResolution;
+	// Для вывода значений на экран
+	private string StringWidth;
+	private string StringHeight;
 	
-//Переменные для расширения экрана
-private int width = 1920;
-private int height = 1080;
-private bool FullScreen = true;
+	//Переменные для расширения экрана
+	private int width = 1920;
+	private int height = 1080;
+	private bool FullScreen = true;
 
-// Для настроек управления
-//private bool Mouse;
-//private bool Keyboard;
-//public GameObject go;
-//CharacterController controller;
+	// Для настроек управления
+	//private bool Mouse;
+	//private bool Keyboard;
+	//public GameObject go;
+	//CharacterController controller;
 
     void Start()
     {
-       // audio.volume = ;
         Screen.showCursor = false;
+	    _inMenu = false;
+	    _paused = false;
+	    Time.timeScale = 1;
     }
-  // Update выполняется на каждый кадр 
+	// Update выполняется на каждый кадр 
 	void Update ()
 	{
-		//print("OptionsMenu:");
-		//print(OptionsMenu._audio);
-		//print("AudioPause:");
-		//print(_FloatVolume);
-		//print("Window:");
-		//print(_window);
-		//print("Paused:");
-		//print(_paused);
-		
 		audio.volume = OptionsMenu._audio;
-	// Ставим игру на паузу
-		if (Input.GetKeyUp(KeyCode.Escape) && _inMenu == false)
+		// Ставим игру на паузу
+		if (!Input.GetKeyUp(KeyCode.Escape) || _inMenu) return;
+		if (!_paused)
 		{
-			if (!_paused)
-			{
-				Time.timeScale = 0;
-				_paused = true;
-				_window = 0;
-				audio.Pause();
-				Screen.showCursor = true;
-				var mouseLook = GameObject.Find("First Person Controller").GetComponent("MouseLook");
-				//var mmouse = MouseLook.rotationY;
-				//print(mmouse);
-				Destroy(mouseLook);
-				//return;
-			}
-			//if(_paused)
-			else{
-				//if (_window > 0)
-				//{
-				//	print("lol");
-				//}
-				Time.timeScale = 1;
-				_paused = false;
-				_window = -100;
-				audio.Play();
-				Screen.showCursor = false;
-				GameObject.Find("First Person Controller").AddComponent("MouseLook");
-			}
-		} 
+			Time.timeScale = 0;
+			_paused = true;
+			_window = 0;
+			audio.Pause();
+			Screen.showCursor = true;
+			var mouseLook = GameObject.Find("First Person Controller").GetComponent("MouseLook");
+			Destroy(mouseLook);
+		}
+		else{
+			Time.timeScale = 1;
+			_paused = false;
+			_window = -100;
+			audio.Play();
+			Screen.showCursor = false;
+			GameObject.Find("First Person Controller").AddComponent("MouseLook");
+		}
 	} 
 	
 	void  OnGUI (){
@@ -144,12 +125,12 @@ private bool FullScreen = true;
 			GUI.Box ( new Rect(Screen.width/2 - 100,Screen.height/2 - 100,200,180), "Audio"); 
 			GUI.Label ( new Rect(Screen.width/2 - 100,Screen.height/2 - 80,180,140), "Volume:" ); // текст 
 			
-			_FloatVolume = GUI.HorizontalSlider ( new Rect(Screen.width/2+50 - 90,Screen.height/2+6 - 80, 100, 20), _FloatVolume, 0, 1);
+			//_FloatVolume = GUI.HorizontalSlider ( new Rect(Screen.width/2+50 - 90,Screen.height/2+6 - 80, 100, 20), _FloatVolume, 0, 1);
 			//IntVolume = (int)_FloatVolume;
 			//audio.volume = IntVolume;
-		    audio.volume = _FloatVolume;
-			OptionsMenu._audio = _FloatVolume;
-            //audio.volume = GUI.HorizontalSlider(new Rect(Screen.width / 2 + 50 - 90, Screen.height / 2 + 6 - 80, 100, 20), audio.volume, 0, 1);
+		    //audio.volume = _FloatVolume;
+            audio.volume = GUI.HorizontalSlider(new Rect(Screen.width / 2 + 50 - 90, Screen.height / 2 + 6 - 80, 100, 20), audio.volume, 0, 1);
+			OptionsMenu._audio = audio.volume;
 			if (GUI.Button ( new Rect(Screen.width/2 - 90,Screen.height/2 + 40,180,30), "Back") || Input.GetKeyUp(KeyCode.Escape)) { 
         		_window = 1;
 				_inMenu = true;

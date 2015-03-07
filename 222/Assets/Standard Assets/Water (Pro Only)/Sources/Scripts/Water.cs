@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
 [ExecuteInEditMode] // Make water live-update even when not in play mode
 public class Water : MonoBehaviour
 {

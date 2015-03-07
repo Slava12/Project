@@ -12,7 +12,7 @@ public class GameTime : MonoBehaviour
 	//
 	float minutes = 0;
 	float seconds = 0;
-	private float scale = 1;
+	public static float scale = 1;
 	string hour = System.String.Empty;
 	string minute = System.String.Empty;
 	string second = System.String.Empty;
@@ -59,6 +59,7 @@ public class GameTime : MonoBehaviour
 
 	private void Start()
 	{
+		scale = 1;
 		_sunLight = sun.GetComponentInChildren<Light>();
 
 		if (InitialStateIndex >= 0 && InitialStateIndex < timeOfDayTransitions.Length)
