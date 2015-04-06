@@ -718,7 +718,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_RefractLayers.m_Bits
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
@@ -3280,7 +3280,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_RefractLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!23 &1312726516
 Renderer:
   m_ObjectHideFlags: 0

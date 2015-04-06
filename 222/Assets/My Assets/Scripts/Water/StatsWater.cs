@@ -1,17 +1,10 @@
-﻿using System.CodeDom;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
-//public static class MyClass
-//{
-//	public static int l = -1;
-//	public static int r = 0;
-//}
 public class StatsWater : MonoBehaviour
 {
 	private GameObject _render;
 	private GameObject _render1;
-	Vector3 ptr = new Vector3(0, 1, 0);
+	//Vector3 ptr = new Vector3(0, 1, 0);
 	//// Use this for initialization
 	void Start () {
 		_render = GameObject.Find("water0");
