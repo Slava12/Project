@@ -3,10 +3,10 @@
 public class Pause : MonoBehaviour
 {
 	// Игровая пауза
-	private bool _paused;
+	public static bool _paused;
 	// Окна меню
 	private string _window = "Game";
-	private float _angle = 0f;
+	//private float _angle = 0f;
 
     void Start()
     {
@@ -16,8 +16,8 @@ public class Pause : MonoBehaviour
     }
 	// Update выполняется на каждый кадр 
 	void Update ()
-	{
-		//audio.volume = OptionsMenu._audio;
+	{	
+		audio.volume = Options._audio;
 		// Ставим игру на паузу
 		if (!Input.GetKeyUp(KeyCode.Escape)) return;
 		if (!_paused)
@@ -48,8 +48,8 @@ public class Pause : MonoBehaviour
 		////////////////////////////
 		if (_window == "Main Menu")
 		{
-			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 200, 180), "Game menu");
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), "Continue"))
+			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("Pause") + "</size>");
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), LanguageManager.GetText("Continue")))
 			{
 				Time.timeScale = 1;
 				_paused = false;
@@ -58,15 +58,15 @@ public class Pause : MonoBehaviour
 				Screen.showCursor = false;
 				GameObject.Find("First Person Controller").AddComponent("MouseLook");
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), "Options"))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), LanguageManager.GetText("Options")))
 			{
 				_window = "Options";
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), "Main menu"))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), LanguageManager.GetText("MainMenu")))
 			{
 				Application.LoadLevel(0);
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Exit game"))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("ExitGame")))
 			{
 				Application.Quit();
 			}
@@ -74,5 +74,6 @@ public class Pause : MonoBehaviour
 		_window = Options.GetOptions(_window);
 		_window = Options.GetAudio(_window);
 		_window = Options.GetVideo(_window);
+		_window = Options.GetLanguage(_window);
 	}
 }

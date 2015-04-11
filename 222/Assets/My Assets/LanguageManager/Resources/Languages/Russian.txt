@@ -1,4 +1,4 @@
-/Resources/Languages/
+﻿/Resources/Languages/
 
 
 HelloWorld2 = Здравствуйте еще раз мир!

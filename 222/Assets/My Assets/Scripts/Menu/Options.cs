@@ -2,16 +2,17 @@
 using System.Collections;
 
 public class Options : MonoBehaviour {
-
+	//public static Language defaultLanguage = Language.English;
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
-	private static float _audio = (float)0.5;
+	public static float _audio = (float)0.5;
+	public static int defaultLanguage = 0;
 	// Update is called once per frame
 	void Update ()
 	{
-		audio.volume = _audio;
+		//audio.volume = _audio;
 	}
 
 	// Разрешение экрана
@@ -30,18 +31,45 @@ public class Options : MonoBehaviour {
 	{
 		if (window == "Options")
 		{
-			GUI.Box(new Rect(Screen.width/2 - 100, Screen.height/2 - 100, 200, 180), "Options");
-			if (GUI.Button(new Rect(Screen.width/2 - 90, Screen.height/2 - 80, 180, 30), "Video"))
+			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("Options") + "</size>");
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), LanguageManager.GetText("Video")))
 			{
 				window = "Video";
 			}
-			if (GUI.Button(new Rect(Screen.width/2 - 90, Screen.height/2 - 40, 180, 30), "Audio"))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), LanguageManager.GetText("Audio")))
 			{
 				window = "Audio";
 			}
-			if (GUI.Button(new Rect(Screen.width/2 - 90, Screen.height/2 + 40, 180, 30), "Back") || Input.GetKey(KeyCode.Escape))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2, 180, 30), LanguageManager.GetText("Language")))
+			{
+				window = "Language";
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("Back")) || Input.GetKey(KeyCode.Escape))
 			{
 				window = "Main Menu";
+			}
+		}
+		return window;
+	}
+
+	public static string GetLanguage(string window)
+	{
+		if (window == "Language")
+		{
+			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("Language") + "</size>");
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), LanguageManager.GetText("English")))
+			{
+				LanguageManager.LoadLanguageFile(Language.English);
+				defaultLanguage = 1;
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), LanguageManager.GetText("Russian")))
+			{
+				LanguageManager.LoadLanguageFile(Language.Russian);
+				defaultLanguage = 1;
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("Back")) || Input.GetKeyUp(KeyCode.Escape))
+			{
+				window = "Options";
 			}
 		}
 		return window;
@@ -51,10 +79,10 @@ public class Options : MonoBehaviour {
 	{
 		if (window == "Audio")
 		{
-			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 200, 180), "Audio");
-			GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 80, 180, 140), "Volume:"); // текст 
-			_audio = GUI.HorizontalSlider(new Rect(Screen.width / 2 + 50 - 90, Screen.height / 2 + 6 - 80, 100, 20), _audio, 0, 1);
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Back") || Input.GetKeyUp(KeyCode.Escape))
+			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("Audio") + "</size>");
+			GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 80, 180, 140), LanguageManager.GetText("Volume")); // текст 
+			_audio = GUI.HorizontalSlider(new Rect(Screen.width / 2 + 60 - 90, Screen.height / 2 + 6 - 80, 100, 20), _audio, 0, 1);
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("Back")) || Input.GetKeyUp(KeyCode.Escape))
 			{
 				window = "Options";
 			}
@@ -66,10 +94,10 @@ public class Options : MonoBehaviour {
 	{
 		if (window == "Video")
 		{
-			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 200, 180), "Video");
-			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), "Resolution:"); // текст 
+			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("Video") + "</size>");
+			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), LanguageManager.GetText("Resolution")); // текст 
 
-			_floatResolution = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 20, Screen.height / 2 - 75, 100, 30), _floatResolution, 0, 3);
+			_floatResolution = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 10, Screen.height / 2 - 75, 100, 30), _floatResolution, 0, 3);
 			// Расчеты расширения
 			_intResolution = (int)_floatResolution;
 			if (_intResolution == 0)
@@ -95,13 +123,13 @@ public class Options : MonoBehaviour {
 			_stringWidth = _width.ToString();
 			_stringHeight = _height.ToString();
 			// Вывод на экран выбираемого расширения
-			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), _stringWidth); // ширина
-			GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 40, 180, 30), _stringHeight); // высота
+			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), _stringWidth + " x " + _stringHeight); // ширина
+			//GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 40, 180, 30), _stringHeight); // высота
 
-			_fullScreen = GUI.Toggle(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), _fullScreen, "Full screen");
+			_fullScreen = GUI.Toggle(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), _fullScreen, LanguageManager.GetText("FullScreen"));
 			//if (FullScreen == true) {}
 
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Save and back"))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("Submit")))
 			{
 				Screen.SetResolution(_width, _height, _fullScreen);//A - ширина. B - высота. С - полноэкранный или оконный.
 				window = "Options";
@@ -118,11 +146,36 @@ public class Options : MonoBehaviour {
 	{
 		if (window == "Help")
 		{
-			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 200, 180), "Help");
-			GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 80, 180, 140), "Менять скорость игры: Num0 - Num9"); // текст 
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), "Back") || Input.GetKey(KeyCode.Escape))
+			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("Help") + "</size>");
+			GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 80, 180, 140), LanguageManager.GetText("HelpText")); // текст 
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("Back")) || Input.GetKey(KeyCode.Escape))
 			{
 				window = "Main Menu";
+			}
+		}
+		return window;
+	}
+
+	public static string GetMainMenu(string window)
+	{
+		if (window == "Main Menu")
+		{
+			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("MainMenu") + "</size>");
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), LanguageManager.GetText("Play")))
+			{
+				Application.LoadLevel(1);
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), LanguageManager.GetText("Options")))
+			{
+				window = "Options";
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), LanguageManager.GetText("Help")))
+			{
+				window = "Help";
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("ExitGame")))
+			{
+				Application.Quit();
 			}
 		}
 		return window;

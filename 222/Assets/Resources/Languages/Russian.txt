@@ -1,0 +1,38 @@
+﻿/Resources/Languages/
+
+
+English = Английский
+
+Russian = Русский
+
+MainMenu = Главное Меню
+
+Pause = Пауза
+
+Play = Играть
+
+Continue = Продолжить
+
+Options = Настройки
+
+Help = Помощь
+
+HelpText = Менять скорость игры: Num 0 - Num 9
+
+ExitGame = Выход
+
+Back = Назад
+
+Submit = Применить
+
+Video = Видео
+
+Resolution = Разрешение
+
+FullScreen = Полный экран
+
+Audio = Звук
+
+Volume = Громкость
+
+Language = Язык

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Settings>
+	<meta>
+		<Name>Project</Name>
+		<version>1.0</version>
+		<language>Multilingual</language>
+	</meta>
+	<group id="Menu">
+		<string id="Play">
+			<text lang="en">Play</text>
+			<text lang="ru">Играть</text>
+			<text lang="de">Spielen</text>
+		</string>
+	</group>
+</Settings>
