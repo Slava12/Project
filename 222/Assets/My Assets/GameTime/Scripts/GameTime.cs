@@ -10,12 +10,12 @@ using UnityEngine;
 public class GameTime : MonoBehaviour
 {
 	//
-	float minutes = 0;
-	float seconds = 0;
+	public static float minutes = 0;
+	public static float seconds = 0;
 	public static float scale = 1;
-	string hour = System.String.Empty;
-	string minute = System.String.Empty;
-	string second = System.String.Empty;
+	public static string hour = System.String.Empty;
+	public static string minute = System.String.Empty;
+	public static string second = System.String.Empty;
 	//
 	private const float SECOND = 1; // constant for 1 second
 	private const float MINUTE = 60 * SECOND; // constant for how many seconds in a minute
@@ -42,7 +42,7 @@ public class GameTime : MonoBehaviour
 	/// <summary>
 	/// Number of days passed since the game had started
 	/// </summary>
-	private int daysPassed;
+	public static int daysPassed;
 
 	public TimeOfDayTransition[] timeOfDayTransitions;
 	public int InitialStateIndex;
@@ -55,10 +55,17 @@ public class GameTime : MonoBehaviour
 	/// <summary>
 	/// Current time in hours
 	/// </summary>
-	public float timeInHours; // In game time in hours
+	public static float timeInHours; // In game time in hours
 
 	private void Start()
 	{
+		seconds = 0;
+		minutes = 0;
+		hour = "0";
+		minute = "0";
+		second = "0";
+		daysPassed = 0;
+		timeInHours = 12;
 		scale = 1;
 		_sunLight = sun.GetComponentInChildren<Light>();
 
@@ -342,8 +349,8 @@ public class GameTime : MonoBehaviour
 
 	void OnGUI()
 	{
-		GUI.Box(new Rect(50, 15, 100, 25), "Day: " + daysPassed);
-		GUI.Box(new Rect(50, 50, 100, 25), hour + (int)timeInHours + " : " + minute + minutes + " : " + second + seconds);
+		//GUI.Box(new Rect(50, 15, 100, 25), "Day: " + daysPassed);
+		//GUI.Box(new Rect(50, 50, 100, 25), hour + (int)timeInHours + " : " + minute + minutes + " : " + second + seconds);
 		//GUI.Box(new Rect(50, 85, 120, 25), "seconds " + _timeInSeconds);
 		//GUI.Box(new Rect(50, 120, 130, 25), "delta " + Time.deltaTime*1000);
 		//GUI.Box(new Rect(50, 155, 130, 25), "scale " + scale);

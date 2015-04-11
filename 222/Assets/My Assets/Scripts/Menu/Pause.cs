@@ -43,8 +43,11 @@ public class Pause : MonoBehaviour
 	
 	void  OnGUI (){
 		//////////////////
-		GUI.Box(new Rect(Screen.width - 150, Screen.height - 100, 100, 25), "Health = " + ((int)PlayerWater.health).ToString());
-		GUI.Box(new Rect(Screen.width - 150, Screen.height - 70, 100, 25), "Oxygen = " + ((int)PlayerWater.oxygen).ToString());
+		GUI.Box(new Rect(Screen.width - 150, Screen.height - 100, 120, 25), LanguageManager.GetText("Health") + " = " + ((int)PlayerWater.health).ToString());
+		GUI.Box(new Rect(Screen.width - 150, Screen.height - 70, 120, 25), LanguageManager.GetText("Oxygen") + " = " + ((int)PlayerWater.oxygen).ToString());
+		////////////////////////////
+		GUI.Box(new Rect(50, 15, 100, 25), LanguageManager.GetText("Day") + ": " + GameTime.daysPassed);
+		GUI.Box(new Rect(50, 50, 100, 25), GameTime.hour + (int)GameTime.timeInHours + " : " + GameTime.minute + GameTime.minutes + " : " + GameTime.second + GameTime.seconds);
 		////////////////////////////
 		if (_window == "Main Menu")
 		{

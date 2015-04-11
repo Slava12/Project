@@ -38,3 +38,9 @@ Volume = Volume
 
 Language = Language
 
+Health = Health
+
+Oxygen = Oxygen
+
+Day = Day
+

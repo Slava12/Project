@@ -36,3 +36,9 @@ Audio = Звук
 Volume = Громкость
 
 Language = Язык
+
+Health = Здоровье
+
+Oxygen = Кислород
+
+Day = День
