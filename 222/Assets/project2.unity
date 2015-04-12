@@ -226,13 +226,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axes: 0
+  axes: 1
   sensitivityX: 5
-  sensitivityY: 5
+  sensitivityY: 0
   minimumX: -360
   maximumX: 360
-  minimumY: -60
-  maximumY: 60
+  minimumY: 0
+  maximumY: 0
+  rotationY: 0
 --- !u!114 &17765653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,8 +320,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
   m_PrefabInternal: {fileID: 1643376368}
   m_GameObject: {fileID: 17765651}
-  m_LocalRotation: {x: 0, y: -.985047936, z: 0, w: -.172280669}
-  m_LocalPosition: {x: 361.206848, y: 78.9300003, z: 435.79483}
+  m_LocalRotation: {x: 0, y: -.998398662, z: 0, w: -.056569919}
+  m_LocalPosition: {x: 433.243988, y: 85.0370026, z: 450.433014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1842898972}
@@ -397,6 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377ebc02efa6bf049a8c099c34061aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseLookX: {fileID: 17765652}
+  mouseLookY: {fileID: 1527887254}
 --- !u!1 &20957632
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,7 +2481,7 @@ LensFlare:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 824348460}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Flare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Brightness: 3.5
@@ -3230,7 +3233,7 @@ LensFlare:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1268406503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Flare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Brightness: 2.46000004
@@ -3518,6 +3521,7 @@ GameObject:
   - 114: {fileID: 1527887259}
   - 114: {fileID: 1527887261}
   - 114: {fileID: 1527887258}
+  - 114: {fileID: 1527887254}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3546,6 +3550,25 @@ AudioListener:
   m_PrefabInternal: {fileID: 1643376368}
   m_GameObject: {fileID: 1527887251}
   m_Enabled: 1
+--- !u!114 &1527887254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1527887251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axes: 2
+  sensitivityX: 0
+  sensitivityY: 5
+  minimumX: 0
+  maximumX: 0
+  minimumY: -35
+  maximumY: 60
+  rotationY: 0
 --- !u!124 &1527887255
 Behaviour:
   m_ObjectHideFlags: 0
@@ -3826,15 +3849,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 361.206848
+      value: 433.243988
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 78.9300003
+      value: 85.0370026
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 435.79483
+      value: 450.433014
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3842,7 +3865,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -.985047936
+      value: -.998398662
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalRotation.z
@@ -3850,7 +3873,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.172280669
+      value: -.056569919
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_RootOrder
@@ -4510,7 +4533,6 @@ MonoBehaviour:
     auxColor1: {r: .576470613, g: .325490206, b: .227450982, a: 1}
     auxColor2: {r: 0, g: 0, b: 0, a: 0}
   InitialStateIndex: 2
-  timeInHours: 12
 --- !u!1 &1956539171
 GameObject:
   m_ObjectHideFlags: 0

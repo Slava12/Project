@@ -2,14 +2,21 @@
 
 public class Pause : MonoBehaviour
 {
+	public MouseLook mouseLookX;
+	public MouseLook mouseLookY;
 	// Игровая пауза
 	public static bool _paused;
 	// Окна меню
 	private string _window = "Game";
-	//private float _angle = 0f;
 
     void Start()
     {
+		mouseLookX.maximumX = 360;
+		mouseLookX.minimumX = -360;
+		mouseLookX.sensitivityX = 5;
+	    mouseLookY.maximumY = 60;
+	    mouseLookY.minimumY = -35;
+	    mouseLookY.sensitivityY = 5;
         Screen.showCursor = false;
 	    _paused = false;
 	    Time.timeScale = 1;
@@ -27,8 +34,8 @@ public class Pause : MonoBehaviour
 			_window = "Main Menu";
 			audio.Pause();
 			Screen.showCursor = true;
-			var mouseLook = GameObject.Find("First Person Controller").GetComponent("MouseLook");
-			Destroy(mouseLook);
+			mouseLookX.enabled = false;
+			mouseLookY.enabled = false;
 		}
 		else
 		{
@@ -37,11 +44,16 @@ public class Pause : MonoBehaviour
 			_window = "Game";
 			audio.Play();
 			Screen.showCursor = false;
-			GameObject.Find("First Person Controller").AddComponent("MouseLook");
+			mouseLookX.enabled = true;
+			mouseLookY.enabled = true;
 		}
 	} 
 	
 	void  OnGUI (){
+		if (Options.defaultLanguage == 0)
+		{
+			LanguageManager.LoadLanguageFile(Language.Russian);
+		}
 		//////////////////
 		GUI.Box(new Rect(Screen.width - 150, Screen.height - 100, 120, 25), LanguageManager.GetText("Health") + " = " + ((int)PlayerWater.health).ToString());
 		GUI.Box(new Rect(Screen.width - 150, Screen.height - 70, 120, 25), LanguageManager.GetText("Oxygen") + " = " + ((int)PlayerWater.oxygen).ToString());
@@ -59,7 +71,8 @@ public class Pause : MonoBehaviour
 				_window = "Game";
 				audio.Play();
 				Screen.showCursor = false;
-				GameObject.Find("First Person Controller").AddComponent("MouseLook");
+				mouseLookX.enabled = true;
+				mouseLookY.enabled = true;
 			}
 			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), LanguageManager.GetText("Options")))
 			{
