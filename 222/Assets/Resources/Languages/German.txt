@@ -12,7 +12,7 @@ MainMenu =
 
 Pause = Pause
 
-NewGame = 
+NewGame = Neues spiel
 
 Continue = 
 

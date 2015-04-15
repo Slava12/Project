@@ -7,24 +7,25 @@ public class Options : MonoBehaviour {
 	void Start () {
 		
 	}
+
+	private static bool lol;
 	public static float _audio = (float)0.5;
-	public static int defaultLanguage = 0;
+	public static int defaultLanguage;
 	// Update is called once per frame
 	void Update ()
 	{
 		//audio.volume = _audio;
 	}
 
-	// Разрешение экрана
-	private static float _floatResolution = 3;
-	private static int _intResolution;
 	// Для вывода значений на экран
-	private static string _stringWidth;
-	private static string _stringHeight;
+	private static string _stringWidth = "1920";
+	private static string _stringHeight = "1080";
 
 	//Переменные для расширения экрана
 	private static int _width = 1920;
 	private static int _height = 1080;
+	private static int _temporaryWidth = 1920;
+	private static int _temporaryHeight = 1080;
 	private static bool _fullScreen = true;
 
 	public static string GetOptions(string window)
@@ -104,47 +105,72 @@ public class Options : MonoBehaviour {
 		if (window == "Video")
 		{
 			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("Video") + "</size>");
-			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), LanguageManager.GetText("Resolution")); // текст 
+			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 75, 180, 30), LanguageManager.GetText("Resolution")); // текст 
+			if (GUI.Button(new Rect(Screen.width / 2 - 10, Screen.height / 2 - 80, 100, 30), _stringWidth + " x " + _stringHeight))
+			{
+				lol = true;
+			}
+			if (lol)
+			{
+				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 - 80, 100, 30), 1920 + " x " + 1080))
+				{
+					_temporaryWidth = 1920;
+					_temporaryHeight = 1080;
+					lol = false;
+				}
+				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 - 50, 100, 30), 1600 + " x " + 900))
+				{
+					_temporaryWidth = 1600;
+					_temporaryHeight = 900;
+					lol = false;
+				}
+				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 - 20, 100, 30), 1366 + " x " + 768))
+				{
+					_temporaryWidth = 1366;
+					_temporaryHeight = 768;
+					lol = false;
+				}
+				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 + 10, 100, 30), 1024 + " x " + 768))
+				{
+					_temporaryWidth = 1024;
+					_temporaryHeight = 768;
+					lol = false;
+				}
+				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 + 40, 100, 30), 1280 + " x " + 720))
+				{
+					_temporaryWidth = 1280;
+					_temporaryHeight = 720;
+					lol = false;
+				}
+				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 + 70, 100, 30), 640 + " x " + 480))
+				{
+					_temporaryWidth = 640;
+					_temporaryHeight = 480;
+					lol = false;
+				}
+				_stringWidth = _temporaryWidth.ToString();
+				_stringHeight = _temporaryHeight.ToString();
+			}
 
-			_floatResolution = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 10, Screen.height / 2 - 75, 100, 30), _floatResolution, 0, 3);
-			// Расчеты расширения
-			_intResolution = (int)_floatResolution;
-			if (_intResolution == 0)
-			{
-				_width = 640;
-				_height = 480;
-			}
-			if (_intResolution == 1)
-			{
-				_width = 1024;
-				_height = 768;
-			}
-			if (_intResolution == 2)
-			{
-				_width = 1600;
-				_height = 900;
-			}
-			if (_intResolution == 3)
-			{
-				_width = 1920;
-				_height = 1080;
-			}
-			_stringWidth = _width.ToString();
-			_stringHeight = _height.ToString();
-			// Вывод на экран выбираемого расширения
-			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), _stringWidth + " x " + _stringHeight); // ширина
-			//GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 40, 180, 30), _stringHeight); // высота
 
-			_fullScreen = GUI.Toggle(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), _fullScreen, LanguageManager.GetText("FullScreen"));
+			_fullScreen = GUI.Toggle(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 100, 30), _fullScreen, LanguageManager.GetText("FullScreen"));
 			//if (FullScreen == true) {}
 
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("Submit")))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 90, 30), LanguageManager.GetText("Submit")))
 			{
+				_width = _temporaryWidth;
+				_height = _temporaryHeight;
 				Screen.SetResolution(_width, _height, _fullScreen);//A - ширина. B - высота. С - полноэкранный или оконный.
+				lol = false;
 				window = "Options";
 			}
-			if (Input.GetKeyUp(KeyCode.Escape))
+			if (GUI.Button(new Rect(Screen.width / 2 - 0, Screen.height / 2 + 40, 90, 30), LanguageManager.GetText("Back")) || Input.GetKeyUp(KeyCode.Escape))
 			{
+				_stringWidth = _width.ToString();
+				_stringHeight = _height.ToString();
+				_temporaryWidth = _width;
+				_temporaryHeight = _height;
+				lol = false;
 				window = "Options";
 			}
 		}
