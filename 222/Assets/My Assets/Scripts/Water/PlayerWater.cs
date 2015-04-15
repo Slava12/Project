@@ -8,22 +8,19 @@ public class PlayerWater : MonoBehaviour
     public float distance = 100f;
 	////////////////////////////////////////////
 	public GlobalFog gf;
-	public static float health;
-	public static float oxygen;
-
+	private float _speed;
 	public static bool _stats;
 	////////////////////////////////////
 	// Use this for initialization
 	void Start ()
 	{
-		health = 100;
-		oxygen = 100;
 		gf.enabled = false;
 		bf.enabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		_speed = Time.deltaTime * 6 * GameTime.scale;
 	    var ray = new Ray(transform.position, transform.up);
 	    RaycastHit hit;
 
@@ -34,7 +31,7 @@ public class PlayerWater : MonoBehaviour
 		        gf.enabled = true;
 	            bf.enabled = true;
 	            _stats = true;
-		        oxygen -= Time.deltaTime * 6 * GameTime.scale;
+		        Character.oxygen -= _speed;
 	        }
 	    }
         else
@@ -42,20 +39,20 @@ public class PlayerWater : MonoBehaviour
 		    gf.enabled = false;
 	        bf.enabled = false;
             _stats = false;
-			oxygen += Time.deltaTime * 6 * GameTime.scale;
+			Character.oxygen += _speed;
         }
-		if (oxygen >= 100)
+		if (Character.oxygen >= 100)
 		{
-			oxygen = 100;
+			Character.oxygen = 100;
 		}
-		if (oxygen <= 0)
+		if (Character.oxygen <= 0)
 		{
-			oxygen = 0;
-			health -= Time.deltaTime * 6 * GameTime.scale;
+			Character.oxygen = 0;
+			Character.health -= _speed;
 		}
-		if (health <= 0)
+		if (Character.health <= 0)
 		{
-			health = 0;
+			Character.health = 0;
 		}
 	}
 

@@ -31,20 +31,24 @@ public class Options : MonoBehaviour {
 	{
 		if (window == "Options")
 		{
-			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("Options") + "</size>");
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), LanguageManager.GetText("Video")))
+			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 240), "<size=22>" + LanguageManager.GetText("Options") + "</size>");
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), "-" + LanguageManager.GetText("Controls") + "-"))
+			{
+				//window = "Video";
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), LanguageManager.GetText("Video")))
 			{
 				window = "Video";
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), LanguageManager.GetText("Audio")))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), LanguageManager.GetText("Audio")))
 			{
 				window = "Audio";
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2, 180, 30), LanguageManager.GetText("Language")))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("Language")))
 			{
 				window = "Language";
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("Back")) || Input.GetKey(KeyCode.Escape))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 80, 180, 30), LanguageManager.GetText("Back")) || Input.GetKey(KeyCode.Escape))
 			{
 				window = "Main Menu";
 			}
@@ -65,6 +69,11 @@ public class Options : MonoBehaviour {
 			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), LanguageManager.GetText("Russian")))
 			{
 				LanguageManager.LoadLanguageFile(Language.Russian);
+				defaultLanguage = 1;
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), LanguageManager.GetText("German")))
+			{
+				LanguageManager.LoadLanguageFile(Language.German);
 				defaultLanguage = 1;
 			}
 			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("Back")) || Input.GetKeyUp(KeyCode.Escape))
@@ -160,20 +169,24 @@ public class Options : MonoBehaviour {
 	{
 		if (window == "Main Menu")
 		{
-			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("MainMenu") + "</size>");
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), LanguageManager.GetText("Play")))
+			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 240), "<size=22>" + LanguageManager.GetText("MainMenu") + "</size>");
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 30), LanguageManager.GetText("NewGame")))
 			{
 				Application.LoadLevel(1);
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), LanguageManager.GetText("Options")))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 40, 180, 30), "-" + LanguageManager.GetText("LoadGame") + "-"))
+			{
+
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), LanguageManager.GetText("Options")))
 			{
 				window = "Options";
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), LanguageManager.GetText("Help")))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("Help")))
 			{
 				window = "Help";
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("ExitGame")))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 80, 180, 30), LanguageManager.GetText("ExitGame")))
 			{
 				Application.Quit();
 			}

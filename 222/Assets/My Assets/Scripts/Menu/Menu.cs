@@ -9,12 +9,16 @@ public class Menu : MonoBehaviour
 		audio.volume = Options._audio;
 	}
 
-	void OnGUI()
-    {
+	void Start()
+	{
 		if (Options.defaultLanguage == 0)
 		{
 			LanguageManager.LoadLanguageFile(Language.Russian);
 		}
+		Screen.showCursor = true;
+	}
+	void OnGUI()
+    {
 	    _window = Options.GetMainMenu(_window);
 	    _window = Options.GetOptions(_window);
 		_window = Options.GetHelp(_window);

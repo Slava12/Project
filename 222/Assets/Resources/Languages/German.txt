@@ -1,0 +1,59 @@
+﻿/Resources/Languages/
+
+
+
+English = Englisch
+
+Russian = Russisch
+
+German = Deutsch
+
+MainMenu = 
+
+Pause = Pause
+
+NewGame = 
+
+Continue = 
+
+Options = 
+
+Help = Hilfe
+
+HelpText = 
+
+ExitGame = 
+
+Back = 
+
+Submit = 
+
+Video = 
+
+Resolution = Auflösung
+
+FullScreen = 
+
+Audio = 
+
+Volume = 
+
+Language = Sprache
+
+Health = 
+
+Oxygen = 
+
+Day = 
+
+Dead = 
+
+PressToContinue = 
+
+SaveGame = 
+
+LoadGame = 
+
+DaysPassed = 
+
+Controls = 

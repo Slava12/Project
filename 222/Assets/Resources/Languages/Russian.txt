@@ -5,11 +5,13 @@ English = Английский
 
 Russian = Русский
 
-MainMenu = Главное Меню
+German = Немецкий
+
+MainMenu = Главное меню
 
 Pause = Пауза
 
-Play = Играть
+NewGame = Новая игра
 
 Continue = Продолжить
 
@@ -42,3 +44,15 @@ Health = Здоровье
 Oxygen = Кислород
 
 Day = День
+
+Dead = Вы мертвы
+
+PressToContinue = Нажмите для продолжения
+
+SaveGame = Сохранить игру
+
+LoadGame = Загрузить игру
+
+DaysPassed = Дней прошло
+
+Controls = Управление

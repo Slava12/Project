@@ -6,11 +6,13 @@ English = English
 
 Russian = Russian
 
-MainMenu = Main Menu
+German = German
+
+MainMenu = Main menu
 
 Pause = Pause
 
-Play = Play
+NewGame = New game
 
 Continue = Continue
 
@@ -44,3 +46,14 @@ Oxygen = Oxygen
 
 Day = Day
 
+Dead = You are dead
+
+PressToContinue = Press to continue
+
+SaveGame = Save game
+
+LoadGame = Load game
+
+DaysPassed = Days passed
+
+Controls = Controls

@@ -208,6 +208,8 @@ GameObject:
   - 114: {fileID: 17765653}
   - 114: {fileID: 17765652}
   - 114: {fileID: 17765658}
+  - 114: {fileID: 17765659}
+  - 114: {fileID: 17765660}
   m_Layer: 0
   m_Name: First Person Controller
   m_TagString: Untagged
@@ -400,6 +402,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseLookX: {fileID: 17765652}
   mouseLookY: {fileID: 1527887254}
+--- !u!114 &17765659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17765651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6998e574c53dde41969b03c31170072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &17765660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 17765651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3148b71db873f4042ab73c5fd9851887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &20957632
 GameObject:
   m_ObjectHideFlags: 0

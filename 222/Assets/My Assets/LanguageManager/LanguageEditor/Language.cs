@@ -5,4 +5,5 @@ Chinese
 ,Italian
 ,Russian
 ,Spanish
+,German
 }
