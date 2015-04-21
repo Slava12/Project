@@ -72,10 +72,10 @@ public class Options : MonoBehaviour {
 				LanguageManager.LoadLanguageFile(Language.Russian);
 				defaultLanguage = 1;
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), LanguageManager.GetText("German")))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 180, 30), "-" + LanguageManager.GetText("German") + "-"))
 			{
-				LanguageManager.LoadLanguageFile(Language.German);
-				defaultLanguage = 1;
+				//LanguageManager.LoadLanguageFile(Language.German);
+				//defaultLanguage = 1;
 			}
 			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 180, 30), LanguageManager.GetText("Back")) || Input.GetKeyUp(KeyCode.Escape))
 			{
@@ -150,8 +150,8 @@ public class Options : MonoBehaviour {
 				}
 				_stringWidth = _temporaryWidth.ToString();
 				_stringHeight = _temporaryHeight.ToString();
+				
 			}
-
 
 			_fullScreen = GUI.Toggle(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 100, 30), _fullScreen, LanguageManager.GetText("FullScreen"));
 			//if (FullScreen == true) {}
