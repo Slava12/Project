@@ -57,17 +57,3 @@ LoadGame = Load game
 DaysPassed = Days passed
 
 Controls = Controls
-
-Quality = Quality
-
-Minimum = Minimum
-
-Low = Low
-
-Medium = Normal
-
-High = High
-
-VeryHigh = Very high
-
-TheBest = The best

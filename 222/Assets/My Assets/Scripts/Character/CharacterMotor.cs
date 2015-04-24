@@ -336,10 +336,6 @@ public class CharacterMotor : MonoBehaviour
             movingPlatform.activeGlobalRotation = tr.rotation;
             movingPlatform.activeLocalRotation = Quaternion.Inverse(movingPlatform.activePlatform.rotation) * movingPlatform.activeGlobalRotation;
         }
-		if (Input.GetKey(KeyCode.LeftShift) && grounded)
-		{
-			movement.velocity = inputMoveDirection * 20;
-		}
     }
 
     void FixedUpdate()

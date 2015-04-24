@@ -56,17 +56,3 @@ LoadGame = Загрузить игру
 DaysPassed = Дней прошло
 
 Controls = Управление
-
-Quality = Качество
-
-Minimum = Минимальное
-
-Low = Низкое
-
-Medium = Среднее
-
-High = Высокое
-
-VeryHigh = Очень высокое
-
-TheBest = Наилучшее

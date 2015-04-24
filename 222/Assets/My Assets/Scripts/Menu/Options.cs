@@ -4,14 +4,11 @@ using System.Collections;
 public class Options : MonoBehaviour {
 	//public static Language defaultLanguage = Language.English;
 	// Use this for initialization
-	void Start ()
-	{
+	void Start () {
+		
 	}
 
-	private static bool _showResolutions;
-	private static bool _showQualities;
-	private static string _qualityName = "null";
-	private static int _qualityNumber = 5;
+	private static bool lol;
 	public static float _audio = (float)0.5;
 	public static int defaultLanguage;
 	// Update is called once per frame
@@ -30,10 +27,6 @@ public class Options : MonoBehaviour {
 	private static int _temporaryWidth = 1920;
 	private static int _temporaryHeight = 1080;
 	private static bool _fullScreen = true;
-
-	
-
-
 
 	public static string GetOptions(string window)
 	{
@@ -115,93 +108,60 @@ public class Options : MonoBehaviour {
 			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 75, 180, 30), LanguageManager.GetText("Resolution")); // текст 
 			if (GUI.Button(new Rect(Screen.width / 2 - 10, Screen.height / 2 - 80, 100, 30), _stringWidth + " x " + _stringHeight))
 			{
-				_showResolutions = true;
-				_showQualities = false;
+				lol = true;
 			}
-			if (_showResolutions)
+			if (lol)
 			{
 				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 - 80, 100, 30), 1920 + " x " + 1080))
 				{
 					_temporaryWidth = 1920;
 					_temporaryHeight = 1080;
-					_showResolutions = false;
+					lol = false;
 				}
 				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 - 50, 100, 30), 1600 + " x " + 900))
 				{
 					_temporaryWidth = 1600;
 					_temporaryHeight = 900;
-					_showResolutions = false;
+					lol = false;
 				}
 				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 - 20, 100, 30), 1366 + " x " + 768))
 				{
 					_temporaryWidth = 1366;
 					_temporaryHeight = 768;
-					_showResolutions = false;
+					lol = false;
 				}
 				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 + 10, 100, 30), 1024 + " x " + 768))
 				{
 					_temporaryWidth = 1024;
 					_temporaryHeight = 768;
-					_showResolutions = false;
+					lol = false;
 				}
 				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 + 40, 100, 30), 1280 + " x " + 720))
 				{
 					_temporaryWidth = 1280;
 					_temporaryHeight = 720;
-					_showResolutions = false;
+					lol = false;
 				}
 				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 + 70, 100, 30), 640 + " x " + 480))
 				{
 					_temporaryWidth = 640;
 					_temporaryHeight = 480;
-					_showResolutions = false;
+					lol = false;
 				}
 				_stringWidth = _temporaryWidth.ToString();
 				_stringHeight = _temporaryHeight.ToString();
 				
 			}
-			string[] qualityList = { LanguageManager.GetText("Minimum"),
-									 LanguageManager.GetText("Low"),
-									 LanguageManager.GetText("Medium"),
-									 LanguageManager.GetText("High"),
-									 LanguageManager.GetText("VeryHigh"),
-									 LanguageManager.GetText("TheBest") };
-			if (_qualityName == "null")
-			{
-				_qualityName = qualityList[qualityList.Length - 1];
-			}
-			_qualityName = qualityList[_qualityNumber];
-			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 35, 180, 30), LanguageManager.GetText("Quality"));
-			if (GUI.Button(new Rect(Screen.width / 2 - 20, Screen.height / 2 - 40, 110, 30), _qualityName))
-			{
-				_showResolutions = false;
-				_showQualities = true;
 
-			}
-			if (_showQualities)
-			{
-				var offsetHeight = 0;
-				for (var qualityNumber = 0; qualityNumber < qualityList.Length; qualityNumber++)
-				{
-					if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 - 40 + offsetHeight, 110, 30), qualityList[qualityNumber]))
-					{
-						QualitySettings.SetQualityLevel(qualityNumber, true);
-						_qualityName = qualityList[qualityNumber];
-						_qualityNumber = qualityNumber;
-						_showQualities = false;
-					}
-					offsetHeight += 30;
-				}
-			}
 			_fullScreen = GUI.Toggle(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 0, 100, 30), _fullScreen, LanguageManager.GetText("FullScreen"));
+			//if (FullScreen == true) {}
 
 			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 40, 90, 30), LanguageManager.GetText("Submit")))
 			{
 				_width = _temporaryWidth;
 				_height = _temporaryHeight;
 				Screen.SetResolution(_width, _height, _fullScreen);//A - ширина. B - высота. С - полноэкранный или оконный.
-				_showResolutions = false;
-				_showQualities = false;
+				lol = false;
 				window = "Options";
 			}
 			if (GUI.Button(new Rect(Screen.width / 2 - 0, Screen.height / 2 + 40, 90, 30), LanguageManager.GetText("Back")) || Input.GetKeyUp(KeyCode.Escape))
@@ -210,8 +170,7 @@ public class Options : MonoBehaviour {
 				_stringHeight = _height.ToString();
 				_temporaryWidth = _width;
 				_temporaryHeight = _height;
-				_showResolutions = false;
-				_showQualities = false;
+				lol = false;
 				window = "Options";
 			}
 		}
