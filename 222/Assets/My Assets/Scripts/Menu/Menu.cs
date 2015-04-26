@@ -25,6 +25,7 @@ public class Menu : MonoBehaviour
 		_window = Options.GetVideo(_window);
 	    _window = Options.GetAudio(_window);
 	    _window = Options.GetLanguage(_window);
+		_window = Options.GetExit(_window);
 		//var config = LocalizationManager.Instance.LoadResource("Languages");
 		//print(config.text);
     }

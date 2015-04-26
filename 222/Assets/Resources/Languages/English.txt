@@ -22,7 +22,7 @@ Help = Help
 
 HelpText = Change game speed: Num 0 - Num 9
 
-ExitGame = Exit Game
+Exit = Exit
 
 Back = Back
 
@@ -71,3 +71,11 @@ High = High
 VeryHigh = Very high
 
 TheBest = The best
+
+ExitQuestion = Do you really want to exit game?
+
+Question2 = to exit game?
+
+Yes = Yes
+
+No = No

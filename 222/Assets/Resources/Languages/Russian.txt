@@ -21,7 +21,7 @@ Help = Помощь
 
 HelpText = Менять скорость игры: Num 0 - Num 9
 
-ExitGame = Выход
+Exit = Выход
 
 Back = Назад
 
@@ -70,3 +70,11 @@ High = Высокое
 VeryHigh = Очень высокое
 
 TheBest = Наилучшее
+
+ExitQuestion = Вы действительно хотите выйти из игры?
+
+Question2 = выйти из игры?
+
+Yes = Да
+
+No = Нет

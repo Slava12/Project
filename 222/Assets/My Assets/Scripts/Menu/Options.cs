@@ -109,27 +109,33 @@ public class Options : MonoBehaviour {
 
 	public static string GetVideo(string window)
 	{
-		if (Input.anyKey &&
-			(Input.mousePosition.x < Screen.width / 2 + 100 || Input.mousePosition.x > Screen.width / 2 + 210 ||               // ширина, как и в кнопках, а высота (из-за разных знаков) - у верхней границы
-			Input.mousePosition.y < Screen.height / 2 - 140 || Input.mousePosition.y > Screen.height / 2 + 40))                // минус меняется на плюс, а нижняя на минус: (offset*количество кнопок - верхняя граница)
-		{
-			_showQualities = false;
-		}
+		int[,] resolutionList = { { 1920, 1280, 1600, 1280, 1366, 1024, 1280, 640 }, { 1080, 1024, 900, 800, 768, 768, 720, 480 } };
+		string[] qualityList = { LanguageManager.GetText("Minimum"),
+								 LanguageManager.GetText("Low"),
+								 LanguageManager.GetText("Medium"),
+								 LanguageManager.GetText("High"),
+								 LanguageManager.GetText("VeryHigh"),
+								 LanguageManager.GetText("TheBest") };
 		if (Input.anyKey &&
 			(Input.mousePosition.x < Screen.width / 2 + 100 || Input.mousePosition.x > Screen.width / 2 + 200 ||
-			Input.mousePosition.y < Screen.height / 2 - 100 || Input.mousePosition.y > Screen.height / 2 + 80))
+			Input.mousePosition.y < Screen.height / 2 - (resolutionList.Length / 2) * 30 + 80 || Input.mousePosition.y > Screen.height / 2 + 80))
 		{
 			_showResolutions = false;
 		}
+		if (Input.anyKey &&
+			(Input.mousePosition.x < Screen.width / 2 + 100 || Input.mousePosition.x > Screen.width / 2 + 210 ||               // ширина, как и в кнопках, а высота (из-за разных знаков) - у верхней границы
+			Input.mousePosition.y < Screen.height / 2 - qualityList.Length * 30 + 40 || Input.mousePosition.y > Screen.height / 2 + 40))                // минус меняется на плюс, а нижняя на минус: (offset*количество кнопок - верхняя граница)
+		{
+			_showQualities = false;
+		}
 		if (window == "Video")
 		{
-			int[,] resolutionList = { { 1920, 1600, 1366, 1024, 1280, 640 }, { 1080, 900, 768, 768, 720, 480 } };
 			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("Video") + "</size>");
 			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 75, 180, 30), LanguageManager.GetText("Resolution")); // текст 
 			if (GUI.Button(new Rect(Screen.width / 2 - 10, Screen.height / 2 - 80, 100, 30), _stringWidth + " x " + _stringHeight))
 			{
 				_showResolutions = true;
-				_showQualities = false;
+				//_showQualities = false;
 			}
 			if (_showResolutions)
 			{
@@ -148,12 +154,6 @@ public class Options : MonoBehaviour {
 				_stringHeight = _temporaryHeight.ToString();
 				
 			}
-			string[] qualityList = { LanguageManager.GetText("Minimum"),
-									 LanguageManager.GetText("Low"),
-									 LanguageManager.GetText("Medium"),
-									 LanguageManager.GetText("High"),
-									 LanguageManager.GetText("VeryHigh"),
-									 LanguageManager.GetText("TheBest") };
 			if (_qualityName == "null")
 			{
 				_qualityName = qualityList[qualityList.Length - 1];
@@ -162,7 +162,7 @@ public class Options : MonoBehaviour {
 			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 35, 180, 30), LanguageManager.GetText("Quality"));
 			if (GUI.Button(new Rect(Screen.width / 2 - 20, Screen.height / 2 - 40, 110, 30), _qualityName))
 			{
-				_showResolutions = false;
+				//_showResolutions = false;
 				_showQualities = true;
 
 			}
@@ -241,9 +241,27 @@ public class Options : MonoBehaviour {
 			{
 				window = "Help";
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 80, 180, 30), LanguageManager.GetText("ExitGame")))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 80, 180, 30), LanguageManager.GetText("Exit")))
+			{
+				window = "Exit";
+			}
+		}
+		return window;
+	}
+
+	public static string GetExit(string window)
+	{
+		if (window == "Exit")
+		{
+			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 140), "<size=22>" + LanguageManager.GetText("Exit") + "</size>");
+			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 80, 180, 140), LanguageManager.GetText("ExitQuestion")); // текст 
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 20, 90, 30), LanguageManager.GetText("Yes")))
 			{
 				Application.Quit();
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 0, Screen.height / 2 - 20, 90, 30), LanguageManager.GetText("No")) || Input.GetKey(KeyCode.Escape))
+			{
+				window = "Main Menu";
 			}
 		}
 		return window;

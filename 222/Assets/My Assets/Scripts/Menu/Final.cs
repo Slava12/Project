@@ -51,9 +51,9 @@ public class Final : MonoBehaviour
 			{
 				Application.LoadLevel(0);
 			}
-			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 80, 180, 30), LanguageManager.GetText("ExitGame")))
+			if (GUI.Button(new Rect(Screen.width / 2 - 90, Screen.height / 2 + 80, 180, 30), LanguageManager.GetText("Exit")))
 			{
-				Application.Quit();
+				_window = "Exit";
 			}
 		}
 		_window = Options.GetOptions(_window);
@@ -61,5 +61,6 @@ public class Final : MonoBehaviour
 		_window = Options.GetVideo(_window);
 		_window = Options.GetLanguage(_window);
 		_window = Options.GetHelp(_window);
+		_window = Options.GetExit(_window);
 	}
 }
