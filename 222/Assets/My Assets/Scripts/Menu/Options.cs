@@ -11,7 +11,7 @@ public class Options : MonoBehaviour {
 	private static bool _showResolutions;
 	private static bool _showQualities;
 	private static string _qualityName = "null";
-	private static int _qualityNumber = 5;
+	private static int _qualityNumber = 5;        //количество режимов качества изображения
 	public static float _audio = (float)0.5;
 	public static int defaultLanguage;
 	// Update is called once per frame
@@ -109,6 +109,18 @@ public class Options : MonoBehaviour {
 
 	public static string GetVideo(string window)
 	{
+		if (Input.anyKey &&
+			(Input.mousePosition.x < Screen.width / 2 + 100 || Input.mousePosition.x > Screen.width / 2 + 210 ||               // ширина, как и в кнопках, а высота (из-за разных знаков) - у верхней границы
+			Input.mousePosition.y < Screen.height / 2 - 140 || Input.mousePosition.y > Screen.height / 2 + 40))                // минус меняется на плюс, а нижняя на минус: (offset*количество кнопок - верхняя граница)
+		{
+			_showQualities = false;
+		}
+		if (Input.anyKey &&
+			(Input.mousePosition.x < Screen.width / 2 + 100 || Input.mousePosition.x > Screen.width / 2 + 200 ||
+			Input.mousePosition.y < Screen.height / 2 - 100 || Input.mousePosition.y > Screen.height / 2 + 80))
+		{
+			_showResolutions = false;
+		}
 		if (window == "Video")
 		{
 			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("Video") + "</size>");
