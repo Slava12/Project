@@ -123,6 +123,7 @@ public class Options : MonoBehaviour {
 		}
 		if (window == "Video")
 		{
+			int[,] resolutionList = { { 1920, 1600, 1366, 1024, 1280, 640 }, { 1080, 900, 768, 768, 720, 480 } };
 			GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 200), "<size=22>" + LanguageManager.GetText("Video") + "</size>");
 			GUI.Label(new Rect(Screen.width / 2 - 90, Screen.height / 2 - 75, 180, 30), LanguageManager.GetText("Resolution")); // текст 
 			if (GUI.Button(new Rect(Screen.width / 2 - 10, Screen.height / 2 - 80, 100, 30), _stringWidth + " x " + _stringHeight))
@@ -132,41 +133,16 @@ public class Options : MonoBehaviour {
 			}
 			if (_showResolutions)
 			{
-				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 - 80, 100, 30), 1920 + " x " + 1080))
+				var offsetHeight = 0;
+				for (var resolutionNumber = 0; resolutionNumber < resolutionList.Length / 2; resolutionNumber++)
 				{
-					_temporaryWidth = 1920;
-					_temporaryHeight = 1080;
-					_showResolutions = false;
-				}
-				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 - 50, 100, 30), 1600 + " x " + 900))
-				{
-					_temporaryWidth = 1600;
-					_temporaryHeight = 900;
-					_showResolutions = false;
-				}
-				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 - 20, 100, 30), 1366 + " x " + 768))
-				{
-					_temporaryWidth = 1366;
-					_temporaryHeight = 768;
-					_showResolutions = false;
-				}
-				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 + 10, 100, 30), 1024 + " x " + 768))
-				{
-					_temporaryWidth = 1024;
-					_temporaryHeight = 768;
-					_showResolutions = false;
-				}
-				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 + 40, 100, 30), 1280 + " x " + 720))
-				{
-					_temporaryWidth = 1280;
-					_temporaryHeight = 720;
-					_showResolutions = false;
-				}
-				if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 + 70, 100, 30), 640 + " x " + 480))
-				{
-					_temporaryWidth = 640;
-					_temporaryHeight = 480;
-					_showResolutions = false;
+					if (GUI.Button(new Rect(Screen.width / 2 + 100, Screen.height / 2 - 80 + offsetHeight, 100, 30), resolutionList[0, resolutionNumber] + " x " + resolutionList[1, resolutionNumber]))
+					{
+						_temporaryWidth = resolutionList[0, resolutionNumber];
+						_temporaryHeight = resolutionList[1, resolutionNumber];
+						_showResolutions = false;
+					}
+					offsetHeight += 30;
 				}
 				_stringWidth = _temporaryWidth.ToString();
 				_stringHeight = _temporaryHeight.ToString();
